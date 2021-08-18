@@ -1,0 +1,59 @@
+﻿@{ ViewBag.Title = "Главная"; }
+<div class="row">
+    <div class="col-md-4">
+        <h3>Список студентов и их оценки</h3>
+        <table class="table">
+            <tr>
+                <td><p>Имя</p></td>
+                <td><p>Фамилия</p></td>
+                <td><p>Факультет</p></td>
+                <td><p>Группа</p></td>
+                <td><p>Теплофизика</p></td>
+                <td><p>Механика жидкости и  газов</p></td>
+                <td><p>Лопаточные машины</p></td>
+                <td><p>Криогенная техника</p></td>
+                <td><p>Сумма баллов</p></td>
+            </tr> @foreach (var c in ViewBag.Students)
+            {
+                <tr>
+                    <td><p>@c.FirstName</p></td>
+                    <td><p>@c.LastName</p></td>
+                    <td><p>@c.Faculty</p></td>
+                    <td><p>@c.Group</p></td>
+                    <td><p>@c.Value_ThermalPhysics</p></td>
+                    <td><p>@c.Value_Fluid</p></td>
+                    <td><p>@c.Value_Turbine</p></td>
+                    <td><p>@c.Value_Cryogenic</p></td>
+                    <td><p>@c.Total</p></td>
+                </tr>
+            }
+        </table>
+        <h3></h3>
+        <p><a class="btn btn-default" href="/Home/CreateBid">Добавить данные студента &raquo;</a></p>
+
+    </div>
+</div>
+
+<div>
+    <h5>Сохранить данные 5 студентов с наибольшей суммой баллов</h5>
+</div>
+<div>
+    @using (Ajax.BeginForm("TotalSerch_max", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        <input type="submit" value="Сохранить в файл" />
+    }  
+    <div id="results"> </div>
+
+</div>
+<div>
+    <h5>Сохранить данные 5 студентов с наименьшей суммой баллов</h5>
+</div>
+<div>
+
+    @using (Ajax.BeginForm("TotalSerch_min", new AjaxOptions { UpdateTargetId = "results" }))
+    {
+        <input type="submit" value="Сохранить в файл" />
+    }
+    <div id="results"> </div>
+
+</div>

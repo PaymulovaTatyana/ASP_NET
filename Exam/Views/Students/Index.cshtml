@@ -1,0 +1,77 @@
+﻿@model IEnumerable<Exam.Models.Student>
+
+@{
+    ViewBag.Title = "Студенты";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2></h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Faculty)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value_ThermalPhysics)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value_Fluid)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value_Turbine)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Value_Cryogenic)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Faculty)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value_ThermalPhysics)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value_Fluid)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value_Turbine)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value_Cryogenic)
+        </td>
+        <td>
+            @Html.ActionLink("Изменить", "Edit", new { id=item.StudentId }) |
+            @Html.ActionLink("Подробнее", "Details", new { id=item.StudentId }) |
+            @Html.ActionLink("Удалить", "Delete", new { id=item.StudentId })
+        </td>
+    </tr>
+}
+
+</table>
+<p>
+    @Html.ActionLink("Добавить нового студента", "Create")
+</p>
